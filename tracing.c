@@ -21,7 +21,7 @@ void print_registers() {
     }
 }
 void print_pointers() {
-    // Need to understand first
+    printf("...pointers...\n");
 }
 
 void print_stack_address() {
