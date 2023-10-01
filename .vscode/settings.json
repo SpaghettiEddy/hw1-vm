@@ -5,7 +5,8 @@
     "stdio.h": "c",
     "instruction.h": "c",
     "utilities.h": "c",
-    "machine_types.h": "c"
+    "machine_types.h": "c",
+    "tracing.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",

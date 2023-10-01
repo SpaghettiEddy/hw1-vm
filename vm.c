@@ -1,7 +1,6 @@
 #include "vm.h"
 #include "string.h"
 
-
 void initialize_registers(BOFHeader bfHeader)
 {
     regi.hi = 0;
@@ -359,6 +358,7 @@ int main(int argc, char *argv[])
     int test = 1;
     while (test)
     {
+        print_state();
         test = execute_instr(mem.instrs[regi.pc], bf);
         regi.pc += 4;
     }

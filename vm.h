@@ -15,7 +15,7 @@
 #include "utilities.h"
 #include "file_location.h"
 #include "disasm.h"
-
+#include "tracing.h"
 
 #define V0 2
 #define A0 4
@@ -49,9 +49,5 @@ int is_tracing;
 extern void initialize_registers(BOFHeader bfHeader);
 extern int execute_instr(bin_instr_t instr, BOFFILE bf);
 extern int print_instr(bin_instr_t instr, BOFFILE bf);
-
-
-
-
 
 #endif
