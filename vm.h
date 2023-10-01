@@ -15,6 +15,7 @@
 #include "utilities.h"
 #include "file_location.h"
 #include "disasm.h"
+#include "tracing.h"
 
 
 #define V0 2
