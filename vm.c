@@ -333,7 +333,7 @@ int main(int argc, char *argv[])
         scan_instructions(bfHeader, bf);
         scan_words(bfHeader, bf);
 
-        printf("Addr Instructions\n");
+        printf("Addr Instruction\n");
 
         int numInstructs = bfHeader.text_length / 4;
     
@@ -360,6 +360,7 @@ int main(int argc, char *argv[])
     while (test)
     {
         test = execute_instr(mem.instrs[regi.pc], bf);
+        //tracing
         regi.pc += 4;
     }
 
