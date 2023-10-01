@@ -361,7 +361,7 @@ int main(int argc, char *argv[])
     {
         print_state();
         test = execute_instr(mem.instrs[regi.pc], bf);
-        regi.pc += 4;
+        regi.pc -= 4;
     }
 
     return 0;
