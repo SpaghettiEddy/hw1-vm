@@ -25,8 +25,7 @@ void print_pointers() {
 }
 
 void print_stack_address() {
-    // Missing index of instruction. PC - 1? PC - 4? PC? PC + 1? PC + 4?
-    printf("==> addr:\t%u %s", regi.pc, instruction_assembly_form(mem.instrs[]))
+    printf("==> addr:\t%u %s", regi.pc, instruction_assembly_form(mem.instrs[regi.pc]));
 }
 
 void print_state() {
