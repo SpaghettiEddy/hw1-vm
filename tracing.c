@@ -13,11 +13,11 @@
 #include "scanbof.h"
 
 void print_pc() {
-    printf("\t  PC: %u\n", vm.regi.pc)l
+    printf("\t  PC: %u\n", regi.pc)l
 }
 void print_registers() {
     for (int i = 0; i < 32; i++) {
-        printf("GPR[%s]: %u\t%c", regname_get(i), vm.regi.GPR[i], ((i % 6 == 5) || (i == 31)) * '\n');
+        printf("GPR[%s]: %u\t%c", regname_get(i), regi.GPR[i], ((i % 6 == 5) || (i == 31)) * '\n');
     }
 }
 void print_pointers() {
