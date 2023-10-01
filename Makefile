@@ -14,7 +14,7 @@ ZIP = zip -9
 # Add the names of your own files with a .o suffix to link them into the VM
 
 VM_OBJECTS = machine_types.o instruction.o bof.o \
-             regname.o utilities.o \
+             regname.o utilities.o tracing.o \
 			 scanbof.o reg.o vm.o \
 			 immed.o sys.o jump.o
 SOURCESLIST = `echo $(VM_OBJECTS) | sed -e 's/\\.o/.c/g'`

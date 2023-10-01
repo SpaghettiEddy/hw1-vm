@@ -13,7 +13,7 @@
 #include "scanbof.h"
 
 void print_pc() {
-    printf("\t  PC: %u\n", regi.pc)l
+    printf("\t  PC: %u\n", regi.pc);
 }
 void print_registers() {
     for (int i = 0; i < 32; i++) {
