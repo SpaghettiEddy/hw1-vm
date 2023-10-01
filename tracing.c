@@ -30,7 +30,7 @@ void print_stack_address() {
 
 void print_state() {
     print_pc();
-    print_registers();
-    print_pointers();
-    print_stack_address();
+    // print_registers();
+    // print_pointers();
+    // print_stack_address();
 }
