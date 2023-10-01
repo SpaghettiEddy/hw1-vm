@@ -360,7 +360,6 @@ int main(int argc, char *argv[])
     while (test)
     {
         test = execute_instr(mem.instrs[regi.pc], bf);
-        //tracing
         regi.pc += 4;
     }
 
