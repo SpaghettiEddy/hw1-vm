@@ -25,7 +25,7 @@ void print_pointers() {
 }
 
 void print_stack_address() {
-    printf("==> addr:\t%u %s", regi.pc, instruction_assembly_form(mem.instrs[regi.pc]));
+    printf("==> addr:\t%u %s", regi.pc, instruction_assembly_form(mem.instrs[regi.pc / 4]));
 }
 
 void print_state() {

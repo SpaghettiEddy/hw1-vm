@@ -355,19 +355,24 @@ int main(int argc, char *argv[])
 
     initialize_registers(bfHeader);
 
-    // printf("\n%d\n", bfHeader.data_start_address);
-
     scan_instructions(bfHeader, bf);
     scan_words(bfHeader, bf);
 
+    // for (int i = 0; i < bfHeader.text_length / 4; i++)
+    // {
+    //     printf("%d\n", i);
+    //     print_instr(mem.instrs[i], bf);
+    //     regi.pc += 4;
+    // }
+
     int test = 1;
-    while (test == 1)
+    while (test != 0)
     {   
         if(regi.pc >= MEMORY_SIZE_IN_BYTES)
             return 0;
         print_state();
-        test = execute_instr(mem.instrs[regi.pc], bf);
-        printf("%d\n", test);
+        test = execute_instr(mem.instrs[regi.pc / 4], bf);
+        // printf("%d\n", test);
         regi.pc += 4;
     }
 
