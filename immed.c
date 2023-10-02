@@ -18,7 +18,7 @@
 
 
 void addi(int s, int t, immediate_type i) {
-    regi.GPR[t] = regi.GPR[s] + i;
+    regi.GPR[t] = regi.GPR[s] + machine_types_sgnExt(i);
     return;
 }
 
