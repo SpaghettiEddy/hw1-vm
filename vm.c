@@ -357,12 +357,13 @@ int main(int argc, char *argv[])
     scan_words(bfHeader, bf);
 
     int test = 1;
-    while (test)
+    while (test == 1)
     {   
         if(regi.pc >= MEMORY_SIZE_IN_BYTES)
             return 0;
         print_state();
         test = execute_instr(mem.instrs[regi.pc], bf);
+        print("%d\n", test);
         regi.pc += 4;
     }
 
