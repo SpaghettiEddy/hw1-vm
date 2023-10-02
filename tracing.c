@@ -22,7 +22,7 @@ void print_pc() {
 void print_register(int i) {
     printf("GPR: [%s", regname_get(i));
     if (i == 0) printf(" ");
-    printf("]: ");
+    printf("]: %d", regi.GPR[i]);
     print_white_space(regi.GPR[i], i);
 }
 
@@ -43,13 +43,13 @@ void print_white_space(int num, int i) {
 void print_registers() {
     printf("GPR[%s ]: 0   	", regname_get(0));
     for (int i = 1; i < 32; i++) {
-        if(regi.GPR[i-1] > 1000 || regi.GPR[i] > 1000)
-            printf("GPR[%s]: %u  ", regname_get(i), regi.GPR[i]);
-        else
-            printf("GPR[%s]: %u   	", regname_get(i), regi.GPR[i]);
-        if ((i % 6 == 5) || i == 31) printf("\n");
-        print_reg(regname_get(i));
-        // print_register(i);
+        // if(regi.GPR[i-1] > 1000 || regi.GPR[i] > 1000)
+        //     printf("GPR[%s]: %u  ", regname_get(i), regi.GPR[i]);
+        // else
+        //     printf("GPR[%s]: %u   	", regname_get(i), regi.GPR[i]);
+        // if ((i % 6 == 5) || i == 31) printf("\n");
+        // print_reg(regname_get(i));
+        print_register(i);
     }
 }
 void print_pointers() {

@@ -19,3 +19,4 @@ extern void print_registers();
 extern void print_pointers();
 extern void print_stack_address();
 extern void print_state();
+extern void print_white_space(int num, int i);
