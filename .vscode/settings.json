@@ -3,7 +3,8 @@
     "*.embeddedhtml": "html",
     "stdio.h": "c",
     "instruction.h": "c",
-    "utilities.h": "c"
+    "utilities.h": "c",
+    "sys.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
