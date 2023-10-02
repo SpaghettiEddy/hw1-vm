@@ -12,8 +12,10 @@
 #include "sys.h"
 #include "scanbof.h"
 
-extern void print_registers();
 extern void print_pc();
+extern void print_register(int i);
+extern void print_white_space(int num, int i);
+extern void print_registers();
 extern void print_pointers();
 extern void print_stack_address();
 extern void print_state();
