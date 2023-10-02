@@ -214,11 +214,14 @@ int main(int argc, char *argv[])
     // }
 
     int test = 1;
+    regi.is_tracing = 1;
+    printf("is_tracing is: %d\n", regi.is_tracing);
     while (test != 0)
     {   
         if(regi.pc >= MEMORY_SIZE_IN_BYTES)
             return 0;
-        print_state();
+        if(regi.is_tracing)
+            print_state();
         test = execute_instr(mem.instrs[regi.pc / 4], bf);
         regi.pc += 4;
     }

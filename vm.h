@@ -40,16 +40,16 @@ typedef struct
     address_type hi;
     address_type lo;
     address_type pc;
+    int is_tracing;
 } registers;
 
 
 memory mem;
 registers regi;
-int is_tracing;
 
 extern void initialize_registers(BOFHeader bfHeader);
 extern int execute_instr(bin_instr_t instr, BOFFILE bf);
-extern int print_instr(bin_instr_t instr, BOFFILE bf);
+
 
 
 

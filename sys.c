@@ -34,10 +34,10 @@ void rch()
 
 void stra()
 {
-    is_tracing = 1;
+    regi.is_tracing = 1;
 }
 
 void notr()
 {
-    is_tracing = 0;
+    regi.is_tracing = 0;
 }

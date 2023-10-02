@@ -21,6 +21,6 @@ void jmp(address_type a) {
 
 void jal(address_type a) {
     regi.GPR[RA] = regi.pc; 
-    regi.pc = machine_types_formAddress(regi.pc, a);
+    regi.pc = machine_types_formAddress(regi.pc, a) - 4;
     return;
 }
