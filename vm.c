@@ -358,7 +358,9 @@ int main(int argc, char *argv[])
 
     int test = 1;
     while (test)
-    {
+    {   
+        if(regi.pc >= MEMORY_SIZE_IN_BYTES)
+            break;
         print_state();
         test = execute_instr(mem.instrs[regi.pc], bf);
         regi.pc += 4;
