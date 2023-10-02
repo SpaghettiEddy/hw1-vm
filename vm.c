@@ -255,7 +255,8 @@ int print_instr(bin_instr_t instr, BOFFILE bf)
         switch (instr.immed.op)
         {
         case ADDI_O:
-            printf(" ADDI %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
+            // printf(" ADDI %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
+            printf(" %s\n", instruction_assembly_form(mem.instrs[regi.pc / 4]));
             break;
         case ANDI_O:
             printf(" ANDI %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
@@ -264,7 +265,7 @@ int print_instr(bin_instr_t instr, BOFFILE bf)
             printf(" BORI %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
             break;
         case XORI_O:
-            printf(" XORI %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
+            printf(" XORI %s, %s, 0x%x\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), (int) instr.immed.immed);
             break;
         case BEQ_O:
             printf(" BEQ %s, %s, %-2hu", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);  //ADD OFFSET

@@ -20,7 +20,7 @@ void print_pc() {
 }
 
 void print_register(int i) {
-    printf("GPR: [%s", regname_get(i));
+    printf("GPR[%s", regname_get(i));
     if (i == 0) printf(" ");
     printf("]: %d", regi.GPR[i]);
     print_white_space(regi.GPR[i], i);
