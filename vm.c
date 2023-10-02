@@ -235,10 +235,10 @@ int print_instr(bin_instr_t instr, BOFFILE bf)
             printf(" XOR %s, %s, %s\n", regname_get(instr.reg.rs), regname_get(instr.reg.rt), regname_get(instr.reg.rd));
             break;
         case SLL_F:
-            printf(" SLL %s, %s, %s\n", regname_get(instr.reg.rt), regname_get(instr.reg.rd), regname_get(instr.reg.shift));
+            printf(" SLL %s, %s, %hu\n", regname_get(instr.reg.rt), regname_get(instr.reg.rd), instr.reg.shift);
             break;
         case SRL_F:
-            printf(" SRL %s, %s, %s\n", regname_get(instr.reg.rt), regname_get(instr.reg.rd), regname_get(instr.reg.shift));
+            printf(" SRL %s, %s, %hu\n", regname_get(instr.reg.rt), regname_get(instr.reg.rd), instr.reg.shift);
             break;
         case JR_F:
             printf(" JR %s\n", regname_get(instr.reg.rs));
@@ -267,34 +267,39 @@ int print_instr(bin_instr_t instr, BOFFILE bf)
             printf(" XORI %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
             break;
         case BEQ_O:
-            printf(" BEQ %s, %hu\n", regname_get(instr.immed.rs), instr.immed.immed);  //ADD OFFSET
+            printf(" BEQ %s, %s, %-2hu", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);  //ADD OFFSET
+            printf("# offset is +%hu bytes\n", instr.immed.immed*4);
             break;
         case BNE_O:
-            printf(" BNE %s, %s, %hu \t # offset is +%hu bytes\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
+            if(instr.immed.immed*4 >= 10)
+                printf(" BNE %s, %s, %-3hu", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);  //ADD OFFSET
+            else
+                printf(" BNE %s, %s, %hu \t", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
+            printf("# offset is +%hu bytes\n", instr.immed.immed*4);
             break;
         case BGEZ_O:
-            printf(" BGEZ %s, %hu\n", regname_get(instr.immed.rs), instr.immed.immed);  //ADD OFFSET
+            printf(" BGEZ %s, %hu\t# offset is +%hu bytes\n", regname_get(instr.immed.rs), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
             break;
         case BGTZ_O:
-            printf(" BGTZ %s, %hu\n", regname_get(instr.immed.rs), instr.immed.immed);  //ADD OFFSET
+            printf(" BGTZ %s, %hu\t  # offset is +%hu bytes\n", regname_get(instr.immed.rs), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
             break;
         case BLEZ_O:
-            printf(" BLEZ %s, %hu\n", regname_get(instr.immed.rs), instr.immed.immed);  //ADD OFFSET
+            printf(" BLEZ %s, %hu\t# offset is +%hu bytes\n", regname_get(instr.immed.rs), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
             break;
         case BLTZ_O:
-            printf(" BLTZ %s, %hu\n", regname_get(instr.immed.rs), instr.immed.immed);  //ADD OFFSET
+            printf(" BLTZ %s, %hu\t  # offset is +%hu bytes\n", regname_get(instr.immed.rs), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
             break;
         case LBU_O:   //ADD OFFSET
-            printf(" LBU %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
+            printf(" LBU %s, %s, %hu\t\t# offset is +%hu bytes\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed, instr.immed.immed*4);
             break;
         case LW_O:  //ADD OFFSET
-            printf(" LW %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
+            printf(" LW %s, %s, %hu # offset is +%hu bytes\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed, instr.immed.immed*4);
             break;
         case SB_O:  //ADD OFFSET
-            printf(" SB %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
+            printf(" SB %s, %s, %hu\t\t# offset is +%hu bytes\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed, instr.immed.immed*4);
             break;
         case SW_O:  //ADD OFFSET
-            printf(" SW %s, %s, %hu\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed);
+            printf(" SW %s, %s, %hu\t\t# offset is +%hu bytes\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed, instr.immed.immed*4);
             break;
         default:
             break;
@@ -305,10 +310,10 @@ int print_instr(bin_instr_t instr, BOFFILE bf)
         switch (instr.jump.op)
         {
         case JMP_O:
-            printf(" JMP %hu\n", instr.jump.addr);
+            printf(" JMP %hu # target is byte address %hu\n", instr.jump.addr, instr.jump.addr*4);
             break;
         case JAL_O:
-            printf(" JAL %hu\n", instr.jump.addr);
+            printf(" JAL %hu # target is byte address %hu\n", instr.jump.addr, instr.jump.addr*4);
             break;
         }
         break;
@@ -338,7 +343,7 @@ int main(int argc, char *argv[])
         int numInstructs = bfHeader.text_length / 4;
     
         for (int i = 0; i < numInstructs; i++) {
-            printf("   %d", regi.pc);
+            printf("%4d", regi.pc);
             print_instr(mem.instrs[i], bf);
             regi.pc += 4;
         }
