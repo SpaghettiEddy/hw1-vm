@@ -22,10 +22,10 @@ void initialize_registers(BOFHeader bfHeader)
 int execute_instr(bin_instr_t instr, BOFFILE bf)
 {
     instr_type it = instruction_type(instr);
-    printf("is syscall? \n", syscall_instr_type == it);
-    printf("is reg? \n", reg_instr_type == it);
-    printf("is immed? \n", immed_instr_type == it);
-    printf("is jump? \n", jump_instr_type == it);
+    printf("is syscall? %d\n", syscall_instr_type == it);
+    printf("is reg? %d\n", reg_instr_type == it);
+    printf("is immed? %d\n", immed_instr_type == it);
+    printf("is jump? %d\n", jump_instr_type == it);
 
     switch (it)
     {
