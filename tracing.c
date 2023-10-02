@@ -13,7 +13,10 @@
 #include "scanbof.h"
 
 void print_pc() {
-    printf("\t  PC: %u\n", regi.pc);
+    if(regi.pc == 0)
+        printf("\t  PC: %u\n", regi.pc);
+    else
+        printf("\n\t  PC: %u\n", regi.pc);
 }
 void print_registers() {
     printf("GPR[%s ]: 0   	", regname_get(0));
