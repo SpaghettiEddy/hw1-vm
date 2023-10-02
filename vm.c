@@ -368,7 +368,6 @@ int main(int argc, char *argv[])
             return 0;
         print_state();
         test = execute_instr(mem.instrs[regi.pc / 4], bf);
-        // printf("%d\n", test);
         regi.pc += 4;
     }
 

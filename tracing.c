@@ -18,6 +18,28 @@ void print_pc() {
     else
         printf("\n\t  PC: %u\n", regi.pc);
 }
+
+void print_register(char * name_of_reg, int i) {
+    printf("GPR: [%s", name_of_reg);
+    if (i == 0) printf(" ");
+    printf("]: ");
+    print_white_space(regi.GPR[i], i);
+}
+
+void print_white_space(int num, int i) {
+    if ((i == 31) || ((i + 1) % 6 == 0)) {
+        printf("\n");
+        return;
+    }
+    int spaces = 3;
+    while (num > 0) {
+        spaces--;
+        num /= 10;
+    }
+    for (int j = 0; j < spaces; j++) printf(" ");
+    printf("\t");
+}
+
 void print_registers() {
     printf("GPR[%s ]: 0   	", regname_get(0));
     for (int i = 1; i < 32; i++) {
@@ -26,6 +48,8 @@ void print_registers() {
         else
             printf("GPR[%s]: %u   	", regname_get(i), regi.GPR[i]);
         if ((i % 6 == 5) || i == 31) printf("\n");
+        print_reg(regname_get(i));
+        // print_register(regname_get(i), i);
     }
 }
 void print_pointers() {
