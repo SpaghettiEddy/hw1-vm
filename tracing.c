@@ -26,19 +26,40 @@ void print_register(int i) {
     print_white_space(regi.GPR[i], i);
 }
 
-void print_white_space(int num, int i) {
-    if ((i == 31) || ((i + 1) % 6 == 0)) {
-        printf("\n");
-        return;
+// Assuming addresses should be stored as words and not bytes
+// address might be wrong, other comment line might be right
+void print_data_addresses() {
+    for (int i = 0; i < dat.data_len; i++) {
+        // int offset = i / 4;
+        int offset = i;
+        int address = offset * 4 + dat.data_start;
+        print_spaces(address);
+        printf("    ");
+        printf("%d: %u", address, mem.words[offset + dat.data_start]);
+        if ((i + 1) % 6 == 0) printf("\n");
+        else if (i != dat.data_len) printf("\t     ");
     }
+    printf("...\n");
+}
+
+void print_spaces(int num) {
     int spaces = 4 - (num == 0);
     while (num > 0) {
         spaces--;
         num /= 10;
     }
     for (int j = 0; j < spaces; j++) printf(" ");
+}
+
+void print_white_space(int num, int i) {
+    if ((i == 31) || ((i + 1) % 6 == 0)) {
+        printf("\n");
+        return;
+    }
+    print_spaces(num);
     printf("\t");
 }
+
 
 void print_registers() {
     // printf("GPR[%s ]: 0   	", regname_get(0)); // Change i = 1 back if needs fixing
@@ -52,9 +73,6 @@ void print_registers() {
         print_register(i);
     }
 }
-void print_pointers() {
-    printf("...pointers...\n");
-}
 
 void print_stack_address() {
     printf("==> addr:\t%u %s", regi.pc, instruction_assembly_form(mem.instrs[regi.pc / 4]));
@@ -63,6 +81,6 @@ void print_stack_address() {
 void print_state() {
     print_pc();
     print_registers();
-    print_pointers();
+    print_data_addresses();
     print_stack_address();
 }

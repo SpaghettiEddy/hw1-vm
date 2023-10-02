@@ -43,9 +43,15 @@ typedef struct
     int is_tracing;
 } registers;
 
+typedef struct
+{
+    address_type data_start;
+    word_type data_len;
+} data_t;
 
 memory mem;
 registers regi;
+data_t dat;
 
 extern void initialize_registers(BOFHeader bfHeader);
 extern int execute_instr(bin_instr_t instr, BOFFILE bf);
