@@ -180,7 +180,7 @@ int print_instr(bin_instr_t instr, BOFFILE bf)
         {
         case exit_sc:
             printf(" EXIT\n");
-            return 0;
+            return 1;
             break;
         case print_str_sc:
             printf(" PSTR\n");  // REMEMBER TO CHANGE THIS (MAYBE)
@@ -316,7 +316,7 @@ int print_instr(bin_instr_t instr, BOFFILE bf)
     default: // should never reach
         break;
     }
-    return 1;
+    return 0;
 }
 
 int main(int argc, char *argv[])
@@ -360,7 +360,7 @@ int main(int argc, char *argv[])
     while (test)
     {   
         if(regi.pc >= MEMORY_SIZE_IN_BYTES)
-            break;
+            return 0;
         print_state();
         test = execute_instr(mem.instrs[regi.pc], bf);
         regi.pc += 4;
