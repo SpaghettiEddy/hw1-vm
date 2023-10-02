@@ -41,8 +41,8 @@ void print_white_space(int num, int i) {
 }
 
 void print_registers() {
-    printf("GPR[%s ]: 0   	", regname_get(0));
-    for (int i = 1; i < 32; i++) {
+    // printf("GPR[%s ]: 0   	", regname_get(0)); // Change i = 1 back if needs fixing
+    for (int i = 0; i < 32; i++) {
         // if(regi.GPR[i-1] > 1000 || regi.GPR[i] > 1000)
         //     printf("GPR[%s]: %u  ", regname_get(i), regi.GPR[i]);
         // else
