@@ -270,7 +270,7 @@ int print_instr(bin_instr_t instr, BOFFILE bf)
             printf(" BEQ %s, %s, %hu # offset is +%hu bytes\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
             break;
         case BNE_O:
-            printf(" BNE %s, %s, %hu  # offset is +%hu bytes\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
+            printf(" BNE %s, %s, %hu \t # offset is +%hu bytes\n", regname_get(instr.immed.rs), regname_get(instr.immed.rt), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
             break;
         case BGEZ_O:
             printf(" BGEZ %s, %hu # offset is +%hu bytes\n", regname_get(instr.immed.rs), instr.immed.immed, instr.immed.immed*4);  //ADD OFFSET
