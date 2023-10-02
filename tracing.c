@@ -16,8 +16,9 @@ void print_pc() {
     printf("\t  PC: %u\n", regi.pc);
 }
 void print_registers() {
-    for (int i = 0; i < 32; i++) {
-        printf("GPR[%s]: %u\t", regname_get(i), regi.GPR[i]);
+    printf("GPR[%s ]: 0   	", regname_get(0));
+    for (int i = 1; i < 32; i++) {
+        printf("GPR[%s]: %u   	", regname_get(i), regi.GPR[i]);
         if ((i % 6 == 5) || i == 31) printf("\n");
     }
 }
