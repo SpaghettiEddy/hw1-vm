@@ -17,7 +17,8 @@ void print_pc() {
 }
 void print_registers() {
     for (int i = 0; i < 32; i++) {
-        printf("GPR[%s]: %u\t%c", regname_get(i), regi.GPR[i], ((i % 6 == 5) || (i == 31)) * '\n');
+        char * new_line = {((i % 6 == 5) || (i == 31)) * '\n'};
+        printf("GPR[%s]: %u\t%s", regname_get(i), regi.GPR[i], new_line);
     }
 }
 void print_pointers() {
