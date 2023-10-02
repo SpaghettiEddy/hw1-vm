@@ -19,6 +19,13 @@ void initialize_registers(BOFHeader bfHeader)
     return;
 }
 
+void initialize_data(BOFHeader bfHeader)
+{
+    dat.data_start = bfHeader.data_start_address;
+    dat.data_len = bfHeader.data_length;
+    return;
+}
+
 int execute_instr(bin_instr_t instr, BOFFILE bf)
 {
     instr_type it = instruction_type(instr);
@@ -180,7 +187,7 @@ int main(int argc, char *argv[])
         BOFHeader bfHeader = bof_read_header(bf);
 
         initialize_registers(bfHeader);
-
+        initialize_data(bfHeader);
         
         scan_instructions(bfHeader, bf);
         scan_words(bfHeader, bf);
@@ -202,6 +209,7 @@ int main(int argc, char *argv[])
     BOFHeader bfHeader = bof_read_header(bf);
 
     initialize_registers(bfHeader);
+    initialize_data(bfHeader);
 
     scan_instructions(bfHeader, bf);
     scan_words(bfHeader, bf);
@@ -215,7 +223,7 @@ int main(int argc, char *argv[])
 
     int test = 1;
     regi.is_tracing = 1;
-    printf("is_tracing is: %d\n", regi.is_tracing);
+    //printf("is_tracing is: %d\n", regi.is_tracing);
     while (test != 0)
     {   
         if(regi.pc >= MEMORY_SIZE_IN_BYTES)
