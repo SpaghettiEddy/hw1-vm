@@ -48,7 +48,7 @@ void print_registers() {
         else
             printf("GPR[%s]: %u   	", regname_get(i), regi.GPR[i]);
         if ((i % 6 == 5) || i == 31) printf("\n");
-        print_reg(regname_get(i));
+        //print_reg(regname_get(i));
         // print_register(regname_get(i), i);
     }
 }
