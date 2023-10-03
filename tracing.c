@@ -29,17 +29,24 @@ void print_register(int i) {
 // Assuming addresses should be stored as words and not bytes
 // address might be wrong, other comment line might be right
 void print_data_addresses() {
+    int is_zero = 0;
     for (int i = 0; i < dat.data_len; i++) {
         // int offset = i / 4;
+        if(is_zero == 1)
+            break;
         int offset = i;
         int address = offset * 4 + dat.data_start;
+        if(mem.words[offset + dat.data_start] == 0)
+            is_zero = 1;
         print_spaces(address);
-        printf("    ");
+        //printf(" ");
         printf("%d: %u", address, mem.words[offset + dat.data_start]);
         if ((i + 1) % 6 == 0) printf("\n");
         else if (i != dat.data_len) printf("\t     ");
     }
-    printf("...\n");
+    printf("\t...\n");
+    printf("%d: %u", (((dat.data_start + dat.data_len) - 4) * 4), mem.words[dat.data_len + dat.data_start]);
+    printf("\t...\n");
 }
 
 void print_spaces(int num) {
